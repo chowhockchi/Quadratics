@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Graph Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadratic Explorer</h1>
+        <p class="subtitle">y = ax² + bx + c</p>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="inputA">a =</label>
+                <input type="text" id="inputA" value="1" placeholder="e.g. 1/2, sqrt(2)">
+            </div>
+            <div class="input-group">
+                <label for="inputB">b =</label>
+                <input type="text" id="inputB" value="-4" placeholder="e.g. -4, pi">
+            </div>
+            <div class="input-group">
+                <label for="inputC">c =</label>
+                <input type="text" id="inputC" value="3" placeholder="e.g. 3">
+            </div>
+            <button id="updateBtn">Generate Graph</button>
+        </div>
+
+        <div class="main-content">
+            <div class="graph-section">
+                <div class="chart-container">
+                    <canvas id="quadChart"></canvas>
+                </div>
+                
+                <div class="inequality-controls">
+                    <h3>Inequality Shading</h3>
+                    <div class="btn-group">
+                        <button class="ineq-btn" data-type=">">y > 0</button>
+                        <button class="ineq-btn active" data-type="=">y = 0</button>
+                        <button class="ineq-btn" data-type="<">y < 0</button>
+                    </div>
+                    <div id="inequalityResult" class="result-box highlighted">Range of x: Please select an inequality</div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>Nature of Roots (Discriminant)</h3>
+                    <p>Δ = b² - 4ac = <span id="calcDisc"></span></p>
+                    <p id="rootsNature" class="highlighted"></p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Vieta's Formulas</h3>
+                    <p>Sum of Roots (SOR): α + β = -b/a = <span id="sorValue"></span></p>
+                    <p>Product of Roots (POR): αβ = c/a = <span id="porValue"></span></p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Factored Form</h3>
+                    <p id="factoredForm" class="highlighted"></p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Completing the Square</h3>
+                    <div id="ctsSteps" class="steps-container">
+                        </div>
+                </div>
+
+                <div class="info-card coordinate-finder">
+                    <h3>📍 Coordinate Finder</h3>
+                    
+                    <div class="finder-row">
+                        <label>Find y when x = </label>
+                        <input type="text" id="findXInput" placeholder="e.g. 1/3, sqrt(5)">
+                        <button id="findYBtn" class="small-btn">Calculate y</button>
+                    </div>
+                    <p id="resFindY" class="highlighted">y = ?</p>
+                    
+                    <hr class="divider">
+                    
+                    <div class="finder-row">
+                        <label>Find x when y = </label>
+                        <input type="text" id="findYInput" placeholder="e.g. 2*pi">
+                        <button id="findXBtn" class="small-btn">Calculate x</button>
+                    </div>
+                    <p id="resFindX" class="highlighted">x = ?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
